@@ -1,7 +1,7 @@
 # Classroom-System
 教室予約システム
 
-![](https://img.shields.io/github/license/Koki-Takada-1/Classroom-System?color=yellow&style=plastic)
+[![](https://img.shields.io/github/license/Koki-Takada-1/Classroom-System?color=yellow&style=plastic)](LICENSE)
 
 開発手法：アジャイル
 
