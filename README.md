@@ -2,10 +2,9 @@
 
 [![](https://img.shields.io/github/license/Koki-Takada-1/Classroom-System?color=yellow&style=plastic)](LICENSE)
 
+Several people built a classroom reservation management system to learn the basics of software engineering.
+Classroom reservation management system is a system that helps instructors and students to book classes for any purpose.
 This system will help you to find free place and book them immediately.
-
-Classroom Reservation Management System is a system that helps instructors and students to book classes for any purpose.
-
 
 
 開発手法：アジャイル
