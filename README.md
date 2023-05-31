@@ -6,8 +6,9 @@ Several people built a classroom reservation management system to learn the basi
 Classroom reservation management system is a system that helps instructors and students to book classes for any purpose.
 This system will help you to find free place and book them immediately.
 
-
-開発手法：アジャイル
+### Methodology
+1. Agile
+2. DevOps
 
 [AWTベースのシステム　ソースコード](AWT_base/src)
 
