@@ -1,3 +1,5 @@
+//Test コード編集テスト
+
 package client_system;
 
 import java.awt.*;
