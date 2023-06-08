@@ -4,9 +4,16 @@ user_name VARCHAR(20),
 class_id VARCHAR(5),
 group_id VARCHAR(30),
 password VARCHAR(20),
-PRIMARY KEY (user_id),
-FOREIGN KEY (user_id)
-REFERENCES reservation(user_id)
+PRIMARY KEY (user_id)
+);
+
+CREATE TABLE facility(
+facility_id   VARCHAR(4) NOT NULL,
+facility_name VARCHAR(30) NOT NULL,
+open_time     TIME,
+close_time    TIME,
+explanation   TEXT,
+PRIMARY KEY (facility_id)
 );
 
 CREATE TABLE reservation(
@@ -20,14 +27,4 @@ end_time       TIME,
 PRIMARY KEY (reservation_id),
 FOREIGN KEY (user_id) REFERENCES user(user_id),
 FOREIGN KEY (facility_id) REFERENCES facility(facility_id)
-);
-
-CREATE TABLE facility(
-facility_id   VARCHAR(4) NOT NULL,
-facility_name VARCHAR(30) NOT NULL,
-open_time     TIME,
-close_time    TIME,
-explanation   TEXT,
-PRIMARY KEY (facility_id),
-FOREIGN KEY (facility_id) REFERENCES reservation(facility_id)
 );
