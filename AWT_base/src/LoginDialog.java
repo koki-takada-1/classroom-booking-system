@@ -1,51 +1,56 @@
-//Test コード編集テスト
-
 package client_system;
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class LoginDialog extends Dialog implements ActionListener, WindowListener{
-	boolean		canceled;
+	boolean		canceled;							//キャンセル:true	OK:false
 	
-	TextField	tfUserID;
-	TextField	tfPassword;
+	TextField	tfUserID;							//ユーザID入力用
+	TextField	tfPassword;							//PW入力用テキストフィールド
 	
-	Button		buttonOK;
-	Button		buttonCancel;
+	Button		buttonOK;							//OKボタンインスタンス
+	Button		buttonCancel;						//キャンセルボタンインスタンス
 	
-	Panel		panelNorth;
-	Panel		panelCenter;
-	Panel		panelSouth;
+	Panel		panelNorth;							//上部パネル
+	Panel		panelCenter;						//中央パネル
+	Panel		panelSouth;							//下部パネル
 	
-	public LoginDialog(Frame arg0) {
-		super(arg0, "Login", true);
+	//LOginDialogクラスコンストラクタ
+	public LoginDialog(Frame arg0) {				//引数は、Dialog1所有者、タイトル、モーダル指定
+		super(arg0, "Login", true);					//キャンセル状態トしておく
 		canceled = true;
 		
-		tfUserID = new TextField("", 10);
-		tfPassword = new TextField("", 10);
-		tfPassword.setEchoChar('*');
+		//テキストフィールド生成
+		tfUserID = new TextField("", 10);			//ユーザーID入力用TFインスタンス生成
+		tfPassword = new TextField("", 10);			//PW入力用TFインスタンス生成
+		tfPassword.setEchoChar('*');				//PWは*表示とする
 		
-		buttonOK = new Button("OK");
-		buttonCancel = new Button("キャンセル");
+		//ボタン生成
+		buttonOK = new Button("OK");				//OKボタンインスタンス
+		buttonCancel = new Button("キャンセル");		//キャンセル状態としておく
 		
-		panelNorth = new Panel();
-		panelNorth.add(new Label("ユーザID"));
+		//パネルの生成
+		panelNorth = new Panel();					//上部パネルインスタンス生成
+		panelNorth.add(new Label("ユーザID"));		
 		panelNorth.add(tfUserID);
-		panelCenter = new Panel();
+		panelCenter = new Panel();					//中央
 		panelCenter.add(new Label("パスワード"));
 		panelCenter.add(tfPassword);
-		panelSouth = new Panel();
+		panelSouth = new Panel();					//下部
 		panelSouth.add(buttonCancel);
 		panelSouth.add(buttonOK);
 		
+		//LoginDialogをBorderLayoutに設定し、3つのパネル追加
 		setLayout(new BorderLayout());
 		add(panelNorth, BorderLayout.NORTH);
 		add(panelCenter, BorderLayout.CENTER);
 		add(panelSouth, BorderLayout.SOUTH);
 		
+		//WindowListenerを追加
 		addWindowListener(this);
 		
+		//ボタンにActionListenerを追加
 		buttonOK.addActionListener(this);
 		buttonCancel.addActionListener(this);
 	}
@@ -58,9 +63,9 @@ public class LoginDialog extends Dialog implements ActionListener, WindowListene
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		setVisible(false);
-		canceled = true;
-		dispose();
+		setVisible(false);							//Window可視化
+		canceled = true;							//ログインキャンセル
+		dispose();									//リソース解放	
 	}
 
 	@Override
@@ -95,12 +100,12 @@ public class LoginDialog extends Dialog implements ActionListener, WindowListene
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == buttonCancel) {
-			canceled = true;
-		}else if(e.getSource() == buttonOK) {
-			canceled = false;
+		if(e.getSource() == buttonCancel) {				//押下されたのがキャンセルボタンのとき
+			canceled = true;							//ログインキャンセル
+		}else if(e.getSource() == buttonOK) {			//押下されたのがOK
+			canceled = false;							//認証処理
 		}
-		setVisible(false);
-		dispose();
+		setVisible(false);								//LoginDialog不可視化
+		dispose();										//LoginDialogde使っていたリソース解放
 	}
 }
