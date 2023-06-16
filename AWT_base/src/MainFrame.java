@@ -1,32 +1,41 @@
 package client_system;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.List;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainFrame extends Frame implements ActionListener, WindowListener{
 	ReservationControl	reservationControl;		//ReservationControlクラスのインスタンスを生成
 
-	Panel				panelNorth;				//上部パネル
-	Panel				panelNorthSub1;			//上部パネルの上
-	Panel				panelNorthSub2;			//上部パネルの下
-	Panel				panelCenter;			//中央パネル
-	Panel				panelSouth;				//下部パネル
+	Panel  panelNorth;				//上部パネル
+	Panel  panelNorthSub1;			//上部パネルの上
+	Panel  panelNorthSub2;			//上部パネルの下
+	Panel  panelCenter;			//中央パネル
+	Panel  panelSouth;				//下部パネル
 
 	//ボタンインスタンス作成
-	Button				buttonLog;				//ログイン・ログアウトボタン
-	Button				buttonExplanation;		//教室概要ボタン
-	Button				buttonReservation;		//新規予約画面
+	Button  buttonLog;				//ログイン・ログアウトボタン
+	Button	buttonExplanation;		//教室概要ボタン
+	Button	buttonReservation;		//新規予約画面
 
 	//コンボボックスのインスタンス作成
-	ChoiceFacility 		choiceFacility;			//教室選択用コンボボックス			
+	ChoiceFacility 	choiceFacility;			//教室選択用コンボボックス			
 
 	//テキストフィールドのインスタンス作成
-	TextField			tfLoginID;				//ログインIDを表示するテキストフィールド
+	TextField  tfLoginID;				//ログインIDを表示するテキストフィールド
 
 	//テキストエリアエリアのインスタンス作成
-	TextArea			textMessage;			//結果表示用メッセージ欄
+	TextArea  textMessage;			//結果表示用メッセージ欄
 
 	//MainFrameコンストラクタ
 	public MainFrame(ReservationControl rc) {
@@ -65,7 +74,7 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 		//上部パネルに上下２つのパネルを追加
 		panelNorth	= new Panel(new BorderLayout());
 		panelNorth.add(panelNorthSub1,BorderLayout.NORTH);
-		panelNorth.add(panelNorthSub1,BorderLayout.CENTER);
+		panelNorth.add(panelNorthSub2,BorderLayout.CENTER);
 
 		//メイン画面(MainFrame)に上パネルを追加
 		add(panelNorth, BorderLayout.NORTH);
@@ -81,7 +90,7 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 
 		//下部パネルに新規予約ボタンに追加
 		panelSouth = new Panel();
-		panelSouth.add(buttonExplanation);
+		panelSouth.add(buttonReservation);
 		//メイン画面(MainFrame)に下部パネルを追加
 		add(panelSouth,BorderLayout.SOUTH);
 

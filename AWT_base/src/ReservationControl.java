@@ -15,7 +15,7 @@ import java.util.List;
 public class ReservationControl {
 	Connection		sqlCon;
 	Statement		sqlStmt;
-	String			sqlUserID = "puser";
+	String			sqlUserID = "root";
 	String			sqlPassword = "1234";
 	//　予約システムのユーザIDおよびLogin状態
 	String	   reservationUserID;
@@ -29,7 +29,8 @@ public class ReservationControl {
 	//// MySQLに接続するためのメソッド
 	private void connectDB() {
 		try {
-			Class.forName("org.gjt.mm.mysql.Driver");
+			// JDBC4.0(JavaSE6)以降はClass.forName()は不要
+			
 			// MySQLに接続
 			String url = "jdbc:mysql://localhost?useUnicode=true&characterEncoding=SJIS";
 			sqlCon = DriverManager.getConnection(url, sqlUserID, sqlPassword);
@@ -126,7 +127,8 @@ public class ReservationControl {
 	}
 
 	////すべてのfacility_idを取得するメソッド
-	public List getFacilityId() {
+	// 戻り値の型を書く際にList<E>でジェネリクスから型を記載しないと警告が出る
+	public List<String> getFacilityId() {
 		List<String> facilityId = new ArrayList<String>();
 		connectDB();
 		try {
