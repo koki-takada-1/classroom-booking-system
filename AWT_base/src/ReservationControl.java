@@ -1,4 +1,4 @@
-package client_system;
+package client_system2;
 
 import java.awt.Dialog;
 import java.sql.Connection;
@@ -15,8 +15,8 @@ import java.util.List;
 public class ReservationControl {
 	Connection		sqlCon;
 	Statement		sqlStmt;
-	String			sqlUserID = "root";
-	String			sqlPassword = "1234";
+	String			sqlUserID = "admin";
+	String			sqlPassword = "123nande";
 	//　予約システムのユーザIDおよびLogin状態
 	String	   reservationUserID;
 	private boolean flagLogin;
@@ -32,7 +32,8 @@ public class ReservationControl {
 			// JDBC4.0(JavaSE6)以降はClass.forName()は不要
 			
 			// MySQLに接続
-			String url = "jdbc:mysql://localhost?useUnicode=true&characterEncoding=SJIS";
+			//String url = "jdbc:mysql://localhost?useUnicode=true&characterEncoding=SJIS";
+			String url = "jdbc:mysql://database-2.cwr22ojxbjdj.ap-southeast-2.rds.amazonaws.com:3306/db_reservation";
 			sqlCon = DriverManager.getConnection(url, sqlUserID, sqlPassword);
 			sqlStmt = sqlCon.createStatement();
 		} catch (Exception e) {
@@ -183,8 +184,8 @@ public class ReservationControl {
 			}
 			//新規予約画面から教室名、開始時刻、終了時刻を取得
 			String	facility = rd.choiceFacility.getSelectedItem();		//選択された教室IDを取り出す
-			String	st = rd.startHour.getSelectedItem() + ":" + rd.startMinute.getSelectedItem() + "00";		//選択された開始時間を取り出す
-			String	et = rd.endHour.getSelectedItem() + ":" + rd.endMinute.getSelectedItem() + "00";			//っ選択された終了時間を取り出す
+			String	st = rd.startHour.getSelectedItem() + ":" + rd.startMinute.getSelectedItem() + ":00";		//選択された開始時間を取り出す
+			String	et = rd.endHour.getSelectedItem() + ":" + rd.endMinute.getSelectedItem() + ":00";			//っ選択された終了時間を取り出す
 
 			if( st.compareTo( et) >= 0) {								//開始時刻と終了時刻が等しい（０）か終了時刻が早い（ー１）
 				res = "開始時刻と終了時刻が同じか終了時刻の方が早くなっています";
@@ -198,7 +199,7 @@ public class ReservationControl {
 					connectDB();										//MySQLに接続
 					//予約情報をMySQLに書き込む
 					String sql = "INSERT INTO db_reservation.reservation( facility_id, user_id, date, day, start_time, end_time) VALUES( '"
-							+ facility + "','" + reservationUserID + "','" + now + "','" + rdate + "','" + st + "'," + et + "');";
+							+ facility + "','" + reservationUserID + "','" + now + "','" + rdate + "','" + st + "','" + et + "');";
 					sqlStmt.executeUpdate( sql);
 					res = "予約されました";							//予約情報をDBに書き込む際にエラーが発生したとき
 				}catch (Exception e) {
