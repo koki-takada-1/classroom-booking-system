@@ -1,6 +1,7 @@
 package client_system2;
 
 import java.awt.Dialog;
+import java.awt.Label;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -84,6 +85,10 @@ public class ReservationControl {
 						flagLogin = true;
 						frame.buttonLog.setLabel("ログアウト");
 						frame.tfLoginID.setText(reservationUserID);
+						frame.panelNorthSub2.add(new Label("新規予約"));
+						frame.panelNorthSub2.add(frame.buttonReservation);
+						
+						
 						res = "";
 					} else {
 						res = "IDまたはパスワードが違います";

@@ -27,7 +27,7 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 	Button  buttonLog;				//ログイン・ログアウトボタン
 	Button	buttonExplanation;		//教室概要ボタン
 	Button	buttonReservation;		//新規予約画面
-
+    Button  buttonResSituation;
 	//コンボボックスのインスタンス作成
 	ChoiceFacility 	choiceFacility;			//教室選択用コンボボックス			
 
@@ -44,7 +44,7 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 		buttonLog = new Button("ログイン");
 		buttonExplanation = new Button("教室概要");
 		buttonReservation = new Button("新規予約");
-
+        buttonResSituation = new Button("教室予約状況");
 		//教室選択用のコンボボックスの生成
 		List<String> facilityId = new ArrayList<String>();
 		facilityId = rc.getFacilityId();
@@ -70,9 +70,12 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 		panelNorthSub2.add(choiceFacility);
 		panelNorthSub2.add(new Label(""));
 		panelNorthSub2.add(buttonExplanation);
+		
+		
 
 		//上部パネルに上下２つのパネルを追加
 		panelNorth	= new Panel(new BorderLayout());
+		
 		panelNorth.add(panelNorthSub1,BorderLayout.NORTH);
 		panelNorth.add(panelNorthSub2,BorderLayout.CENTER);
 
@@ -90,7 +93,7 @@ public class MainFrame extends Frame implements ActionListener, WindowListener{
 
 		//下部パネルに新規予約ボタンに追加
 		panelSouth = new Panel();
-		panelSouth.add(buttonReservation);
+		panelSouth.add(buttonResSituation);
 		//メイン画面(MainFrame)に下部パネルを追加
 		add(panelSouth,BorderLayout.SOUTH);
 
